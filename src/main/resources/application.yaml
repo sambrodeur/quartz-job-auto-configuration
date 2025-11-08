@@ -1,3 +1,20 @@
 spring:
   application:
     name: quartz-job-auto-configuration
+  quartz:
+    auto-startup: true
+    job-store-type: memory
+    properties:
+      org:
+        quartz:
+          scheduler:
+            instanceId: AUTO
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 1
+
+quartz:
+  jobs:
+    firstJob:
+      class-name: com.koenig.example.quartz.job.auto.configuration.job.FirstJob
+      cron: '*/30 * * * * ?'
